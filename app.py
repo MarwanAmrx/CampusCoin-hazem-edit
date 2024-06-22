@@ -2,6 +2,7 @@ from flask import Flask,redirect, render_template,request, session ,flash ,jsoni
 from datetime import datetime ,date,timedelta
 import  sqlite3,cryptocode , json 
 import pandas as pd
+import numpy as np
 from fawryAPIcall import call
 conn = sqlite3.connect("data.db")
 
