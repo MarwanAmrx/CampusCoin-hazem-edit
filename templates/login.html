@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+      margin-top: 50px;
+      background-color: #008080; /* Set background color to green */
+    }
+
+    .login-card {
+      background-color: white; /* White card background for the form */
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a slight shadow */
+    }
+
+    .btn-primary { /* Change submit button color to pink */
+      background-color: #E75480 ;
+      border-color: #E75480 ;
+    }
+    .btn-primary:hover {  /* Add hover style for the submit button */
+      background-color: pink; /* Change color to light pink on hover */
+      border-color: pink;
+    }
+  </style>
+</head>
+<body>
+    <header class="text-center mb-4">
+        <h2 class="text-center mb-4" style='font-size:48px;color:#E75480;' >Campus Coin</h2>
+        </header>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="login-card">  <h1 class="text-center mb-4" style="color: #E75480;">Login</h1>
+          <form id="login-form" form action="/auth" method="POST">
+            <div class="form-group">
+              <label for="username">Email:</label>
+              <input type="email" id="username" name="username" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+          </form>
+          {% for message in get_flashed_messages() %}
+
+          <div style="margin: 50px;" onclick="deleteMsg()" id="error-message">
+            
+            <p style="color: red;" class="text-center mt-4 hidden"> {{ message }} <i class="fa fa-check"></i> </p>
+            
+          </div>
+          {% endfor %}
+          <p class="text-center mt-4">Don't have an account? <a href="/signup" id="signup-link">Sign up</a></p>
+        </div>  </div>
+    </div>
+  </div>
+  <script>
+    function deleteMsg() {
+      document.getElementById('error-message').remove();
+    }
+  </script>
+</body>
+</html>
